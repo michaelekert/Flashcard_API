@@ -27,8 +27,5 @@ class FlashcardService < ApplicationService
       e_factory: @e_factory,
       interval: @interval
     )
-
-  errors.add(:invalid_params, "Ivalid params")
-
   end
 end
