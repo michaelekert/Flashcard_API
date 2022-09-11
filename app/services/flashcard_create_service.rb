@@ -1,9 +1,5 @@
-class FlashcardService < ApplicationService
+class FlashcardCreateService < ApplicationService
 
-  include ActiveModel::Validations
-
-  validates :question, presence: true
-  validates :answer, presence: true
 
   def initialize(question,answer)
     @question = question

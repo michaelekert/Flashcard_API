@@ -1,5 +1,7 @@
 class RepetitionService < ApplicationService
+
   attr_accessor :flashcard, :grade
+
   def initialize(flashcard,grade)
     @flashcard = flashcard
     @grade = Integer(grade)
