@@ -14,15 +14,16 @@ class RepetitionService < ApplicationService
   private
 
   def repetition
-      if flashcard.next_rep != Date.today
-        errors.add(:not_today, "Next repetion: #{flashcard.next_rep}")
-        else
-      flashcard.update(
+      if flashcard.next_rep == Date.today || flashcard.next_rep < Date.today
+        flashcard.update(
           interval: new_interval(grade),
           e_factory: new_e_factory(grade),
           next_rep: Date.today + new_interval(grade).days
         ) || (raise ActiveRecord::Rollback)
-      flashcard
+        flashcard
+
+        else
+          errors.add(:not_today, "Next repetion: #{flashcard.next_rep}")
       end
     end
 
