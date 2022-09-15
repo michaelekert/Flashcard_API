@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "flashcards", to: "flashcards#index"
-  post "/create_flashcard", to: "flashcards#create"
+  post "/create", to: "flashcards#create"
   get "/today", to: "flashcards#today"
   get "/show/:id", to: "flashcards#show"
   put "/update/:id", to: "flashcards#update"
