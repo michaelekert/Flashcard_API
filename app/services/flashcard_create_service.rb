@@ -16,6 +16,9 @@ class FlashcardCreateService < ApplicationService
   private
 
   def create_flashcard
+    if @question.blank? || @answer.blank?
+      errors.add(:missing_params, "Missing params")
+    else
     Flashcard.create(
       question: @question,
       answer: @answer,
@@ -23,5 +26,7 @@ class FlashcardCreateService < ApplicationService
       e_factory: @e_factory,
       interval: @interval
     )
+    end
   end
+
 end
