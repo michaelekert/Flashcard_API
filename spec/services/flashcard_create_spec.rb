@@ -7,6 +7,7 @@ RSpec.describe FlashcardCreateService, "call" do
     action = FlashcardCreateService.call("Question","Answer")
     expect(action.success?).to eq true
     expect(action.result.question).to eq "Question"
+    expect(Flashcard.count).to eq 1
   end
   it "Throws a missing params error" do
     result = FlashcardCreateService.call("Question","")

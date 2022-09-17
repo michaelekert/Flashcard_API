@@ -1,22 +1,11 @@
 require 'rails_helper'
 
 
-def valid_params
-  Flashcard.new(
-    id: 11,
-    question: "Example",
-    answer: "Example",
-    next_rep: Date.today,
-    e_factory: 2.5,
-    interval: 1
-  )
-end
-
-
-RSpec.describe FlashcardCreateService, "call" do
+RSpec.describe FlashcardDestroyService, "call" do
   it "Destroy flashcard" do
-    action = FlashcardDestroyService.call(valid_params)
+    create_flashcard = FlashcardCreateService.call("Predestroy question","Predestroy answer")
+    action = FlashcardDestroyService.call(create_flashcard.result)
     expect(action.success?).to eq true
+    expect(Flashcard.count).to eq 0
   end
-
 end

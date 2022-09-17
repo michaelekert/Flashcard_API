@@ -9,7 +9,11 @@ class FlashcardUpdateService < ApplicationService
   end
 
   def call
-    update_flashcard
+    if question.blank? || answer.blank?
+      errors.add(:missing_params, "Missing params")
+    else
+      update_flashcard
+    end
   end
 
   private
